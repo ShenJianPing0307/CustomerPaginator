@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.css' %}"/>
+</head>
+<body>
+<ul>
+{% for book in data %}<!--object_list是分页后的数据-->
+    <li>{{ book.title }}</li>
+{% endfor %}
+</ul>
+
+
+<!--加入自定制页码范围功能-->
+{#{% for i in paginator.get_range_page_num %}#}
+{#  {% if i|safe == paginator.current_page  %}#}
+{#        <a style="font-size: 64px" href="/booklist/?p={{ i }}">{{ i }}</a>#}
+{#    {% else %}#}
+{#        <a href="/booklist/?p={{ i }}">{{ i }}</a>#}
+{#    {% endif %}#}
+{#{% endfor %}#}
+{% include 'pager.html' %}
+
+
+</body>
+</html>
